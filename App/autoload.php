@@ -2,6 +2,10 @@
 
 spl_autoload_register(function ($nome_da_classe)
 {
+    /**
+     * Hack: Trocando a posição da barra para que funcione em servidores Linux.
+     */
+    $nome_da_classe = str_replace('\\', '/', $nome_da_classe);
     $arquivo = BASE_DIR . "/" . $nome_da_classe . ".php";
 
     if(file_exists($arquivo))
